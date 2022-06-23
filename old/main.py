@@ -1,5 +1,5 @@
 #https://github.com/ozgur/python-firebase
-from rtdb import RTDB
+from old.rtdb import RTDB
 
 
 while True:

@@ -1,13 +1,19 @@
 from firebase import firebase
+from dotenv import load_dotenv
+import os
+
+load_dotenv(".env")
+database_url = os.environ.get("DATABASE_URL")
 
 menu = """
 Make a change to the RTDB!
-[0] Get data
-[1] Post data
+[1] Get data
+[2] Post data
+[0] Quit
 """
 
 class RTDB():
-    app = firebase.FirebaseApplication('https://test-12ddf-default-rtdb.firebaseio.com/', None)
+    app = firebase.FirebaseApplication(database_url, None)
 
     def run(self):
         print("Welcome to Realtime Database!")
@@ -15,13 +21,15 @@ class RTDB():
             print(menu)
             num = input("What will it be: ")
 
-            if num == "0":
+            if num == "1":
                 print("Getting data...")
                 print(self.app.get("/", None))
 
-            elif num == "1":
+            elif num == "2":
                 print("Posting data...")
                 key = input("Enter key:   ")
                 value = input("Enter value: ")
                 self.app.put("/", key, value)
+            elif num == "0":
+                break
 
