@@ -16,13 +16,11 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 db = firebase.database()
-storage = firebase.storage()
 
 menuMain = """
 [1] Login
 [2] Register
 [3] RealTime DB
-[4] Storage
 [0] Quit
 """
 
@@ -87,9 +85,6 @@ while True:
     register()
   elif choice == "3":
     database()
-  elif choice == "4":
-    print("TODO")
-    pass
 
     
 
